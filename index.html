@@ -8,26 +8,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="canvas"></div>
+    <canvas id="canvas"></canvas>
     <script>
-        canvas.onmousemove = (e) => {
-            console.log(e.clientX)
-            console.log(e.clientY)
-            let div = document.createElement('div')
-            div.style.position = 'absolute'
-            div.style.left = e.clientX + 'px'
-            div.style.top = e.clientY + 'px'
-            div.style.width = '12px'
-            div.style.height = '12px'
-            div.style.borderRadius='50%'
-            div.style.background = 'black'
-            div.style.marginLeft = '-6px'
-            div.style.marginTop= '-6px'
+        //画线
+        let canvas = document.getElementById('canvas')
+        canvas.width = document.documentElement.clientWidth
+        canvas.height = document.documentElement.clientHeight
+        let ctx = canvas.getContext('2d')
+        let painting = false
 
-            canvas.appendChild(div)
-
-
-
+        ctx.fillstyle = 'black';
+        ctx.strokesyle = 'none';
+        canvas.onmousedown = () =>{
+            painting = true
+        }g
+        canvas.onmousemove = (e) =>{
+            if(painting===true){
+               ctx.beginPath();
+               ctx.arc(e.clientX,e.clientY, 10, 0, 2 * Math.PI)
+               ctx.stroke();
+               ctx.fill();
+            }else{
+                console.log('我看戏')
+            }
+        }
+        canvas.onmouseup = () =>{
+            painting = false
         }
     </script>
 </body>
