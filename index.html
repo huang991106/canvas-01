@@ -5,8 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>画板</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    h1
+    <div id="canvas"></div>
+    <script>
+        canvas.onmousemove = (e) => {
+            console.log(e.clientX)
+            console.log(e.clientY)
+            let div = document.createElement('div')
+            div.style.position = 'absolute'
+            div.style.left = e.clientX + 'px'
+            div.style.top = e.clientY + 'px'
+            div.style.width = '12px'
+            div.style.height = '12px'
+            div.style.borderRadius='50%'
+            div.style.background = 'black'
+            div.style.marginLeft = '-6px'
+            div.style.marginTop= '-6px'
+
+            canvas.appendChild(div)
+
+
+
+        }
+    </script>
 </body>
 </html>
